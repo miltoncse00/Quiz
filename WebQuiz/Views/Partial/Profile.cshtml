@@ -1,0 +1,22 @@
+﻿@{
+    Layout = null;
+}
+
+<h3>Profile Component</h3>
+<div class="panel panel-default">
+    <div class="panel-heading">Profile</div>
+    <div class="panel-body">
+        <div class="form-group">
+            <label for="txtName">Name:</label>
+            <span id="txtName">{{profile?.Name}}</span>            
+        </div>
+        <div class="form-group">
+            <label for="txtLastName">Last Name:</label>
+            <span id="txtLastName">{{profile?.LastName}}</span>
+        </div>
+        <div class="form-group">
+            <label for="txtDOB">Date of Birth:</label>
+            <span id="txtDOB">{{profile?.DateOfBirth | date}}</span>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebQuiz", "WebQuiz\WebQuiz.csproj", "{8527095F-B9A1-4B32-A5BD-8B120E77000F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "QuizApi", "QuizApi\QuizApi.csproj", "{3BE563FD-6D30-4F6B-80AE-36781F325A55}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{8527095F-B9A1-4B32-A5BD-8B120E77000F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{8527095F-B9A1-4B32-A5BD-8B120E77000F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{8527095F-B9A1-4B32-A5BD-8B120E77000F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{8527095F-B9A1-4B32-A5BD-8B120E77000F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{3BE563FD-6D30-4F6B-80AE-36781F325A55}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3BE563FD-6D30-4F6B-80AE-36781F325A55}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3BE563FD-6D30-4F6B-80AE-36781F325A55}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3BE563FD-6D30-4F6B-80AE-36781F325A55}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+EndGlobal

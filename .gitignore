@@ -1,0 +1,7 @@
+/.vs
+/packages
+/QuizApi/bin
+/QuizApi/obj
+/WebQuiz/bin
+/WebQuiz/obj
+/WebQuiz/node_modules

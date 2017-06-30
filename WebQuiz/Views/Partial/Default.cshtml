@@ -1,0 +1,11 @@
+﻿@{
+    Layout = null;
+}
+
+<h3>Demo Component - Calling demo service</h3>
+
+<div>
+    <div class="alert alert-success" role="alert"><strong>Server Time</strong> {{serverTime | date:'medium'}}</div>    
+    <br />
+    <button class="btn btn-default" type="submit" (click)="getTimeFromServer()">Time From Server</button>
+</div>

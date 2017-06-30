@@ -1,0 +1,50 @@
+﻿@{
+    Layout = null;
+}
+
+
+
+@*<table class="table">
+    <tr>
+        <th>
+          Email
+        </th>
+        <th>
+           Name
+        </th>
+        <th>
+           LastName
+        </th>
+        <th>
+           DateOfBirth
+        </th>
+        <th>
+          MonthlySalary
+        </th>
+      
+    </tr>
+
+
+<tr *ngFor="let user of users">
+        <td>
+            {{user.Email}}
+        </td>
+        <td>
+            {{user.Name}}
+        </td>
+        <td>
+            {{user.LastName}}
+        </td>
+        <td>
+            {{user.DateOfBirth| date}}
+        </td>
+        <td>
+            {{user.MonthlySalary}}
+        </td>
+       
+    </tr>
+
+
+</table>*@
+
+<grid [rows]="users" [columns]="columns" [filter]="filter"></grid>

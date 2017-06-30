@@ -1,0 +1,30 @@
+﻿@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" type="text/css" media="screen" href="~/css/webquiz.css">
+    <title>@ViewBag.Title - My ASP.NET Application</title>
+
+    <!-- JQuery core -->
+    <script src="~/js/jquery.js"></script>
+
+    <!-- Angular2 core -->
+    <script src="~/js/angular.js"></script>
+
+    <!-- Angular2 config-->
+    <script src="~/systemjs.config.js"></script>
+
+    <script>
+        System.import('app').catch(function (err) { console.error(err); });
+    </script>
+</head>
+<body>
+    <my-app>
+        Loading...
+    </my-app>
+</body>
+</html>
