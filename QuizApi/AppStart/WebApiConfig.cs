@@ -3,7 +3,6 @@ using System.Reflection;
 using System.Web.Http;
 using System.Web.Http.Dispatcher;
 using Newtonsoft.Json;
-using QuizApi.Utils;
 
 namespace QuizApi.AppStart
 {
