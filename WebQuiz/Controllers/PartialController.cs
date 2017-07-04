@@ -10,21 +10,12 @@ namespace WebQuiz.Controllers
             return View();
         }
 
+     
         // GET: Partial
-        public ActionResult Default()
+        public ActionResult Weather()
         {
             return View();
         }
 
-        // GET: Partial
-        public ActionResult Profile()
-        {
-            return View();
-        }
-
-        public ActionResult Users()
-        {
-            return View();
-        }
     }
 }

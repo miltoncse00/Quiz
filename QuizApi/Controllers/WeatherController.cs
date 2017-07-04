@@ -11,12 +11,12 @@ using QuizService;
 
 namespace QuizApi.Controllers
 {
-    [RoutePrefix("api/profile")]
-    public class ProfileController : BaseController
+    [RoutePrefix("api/weather")]
+    public class WeatherController : BaseController
     {
         private readonly IWeatherService _service;
 
-        public ProfileController(IWeatherService service)
+        public WeatherController(IWeatherService service)
         {
             _service = service;
         }
@@ -24,7 +24,7 @@ namespace QuizApi.Controllers
         [Route("cities/{country}")]
         public async Task<HttpResponseMessage> GetCities(string country)
         {
-
+            ValidateApiVersionAndState();
             var citiesByCountryAsync = await _service.GetCitiesByCountry(country);
             var countries = ConvertToAnother(citiesByCountryAsync);
             return Request.CreateResponse(HttpStatusCode.OK, countries);
@@ -53,6 +53,7 @@ namespace QuizApi.Controllers
         [HttpPost]
         public async Task<HttpResponseMessage> GetWeather([FromBody]JObject data)
         {
+            ValidateApiVersionAndState();
             var city = data["city"].ToObject<string>();
             var country = data["country"].ToObject<string>();
             CurrentWeather countries = await _service.GetWeather(country, city);

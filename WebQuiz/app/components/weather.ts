@@ -1,18 +1,18 @@
 ﻿import { Component, OnInit } from "@angular/core";
-import { ProfileService } from "../services/profile"
+import { WeatherService } from "../services/weather"
 
 @Component({
-    selector: "profile-component",
-    templateUrl: "/partial/profile",
-    providers: [ProfileService]
+    selector: "weather-component",
+    templateUrl: "/partial/weather",
+    providers: [WeatherService]
 })
 
-export class ProfileComponent implements OnInit {
+export class WeatherComponent implements OnInit {
     weather: any;
     country: string;
     city :string;
     cities:string[];
-    constructor(private profileService: ProfileService) { }
+    constructor(private weatherService: WeatherService) { }
 
     ngOnInit(): void {
        
@@ -28,14 +28,14 @@ export class ProfileComponent implements OnInit {
     }
 
     populateCities(country) {
-        this.profileService.getcities(country).then((cities) => {
+        this.weatherService.getcities(country).then((cities) => {
             this.cities = cities;
             console.info(cities);
         });
     }
     selectCities(value) {
         this.city = value;
-        this.profileService.getWeather(this.country, this.city).then((weather) => {
+        this.weatherService.getWeather(this.country, this.city).then((weather) => {
             this.weather = weather;
             console.info(weather);
         });

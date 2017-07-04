@@ -6,7 +6,7 @@ namespace QuizApi.Controllers
     public class BaseController : ApiController
     {
     
-        public void ValidateApiVersionAndState(int version)
+        public void ValidateApiVersionAndState()
         {
             if (!ModelState.IsValid)
                 throw new ArgumentException("ModelState is invalid");

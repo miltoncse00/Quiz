@@ -27,7 +27,7 @@ namespace QuizTests
         [TestMethod]
         public async Task PrepeareInput()
         {
-          ProfileController controller = new ProfileController(_weatherService);
+          WeatherController controller = new WeatherController(_weatherService);
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
 
@@ -42,7 +42,7 @@ namespace QuizTests
         [TestMethod]
         public async Task TestGetWeather()
         {
-            ProfileController controller = new ProfileController(_weatherService);
+            WeatherController controller = new WeatherController(_weatherService);
             controller.Request = new HttpRequestMessage();
             controller.Configuration = new HttpConfiguration();
             JObject obj = JObject.Parse(@"{country:'United States', city:'San Francisco'}");

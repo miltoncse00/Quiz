@@ -6,7 +6,7 @@ import { RouterModule } from "@angular/router";
 import { Location, LocationStrategy, HashLocationStrategy } from "@angular/common";
 import { routing } from "./routes/app.routing";
 import { AppComponent } from "./app.component";
-import { ProfileComponent } from "./components/profile";
+import { WeatherComponent } from "./components/weather";
 
 enableProdMode();
 
@@ -20,7 +20,7 @@ enableProdMode();
     ],
     declarations: [
         AppComponent,
-        ProfileComponent
+        WeatherComponent
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }

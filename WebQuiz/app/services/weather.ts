@@ -5,8 +5,8 @@ import { URLSearchParams } from "@angular/http"
 declare var JSON: any;
 
 @Injectable()
-export class ProfileService {
-    private apiUrl = "/api/profile/";
+export class WeatherService {
+    private apiUrl = "/api/weather/";
 
     constructor(private http: Http) {}
 

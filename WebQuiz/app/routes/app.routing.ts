@@ -1,14 +1,14 @@
 ﻿import { provideRoutes, Routes, RouterModule } from "@angular/router";
-import { ProfileComponent } from "../components/profile";
+import { WeatherComponent } from "../components/weather";
 
 const appRoutes: Routes = [
     {
         path: "",
-        component: ProfileComponent
+        component: WeatherComponent
     },
     {
-        path: "profile",
-        component: ProfileComponent
+        path: "weather",
+        component: WeatherComponent
     }
 ];
 

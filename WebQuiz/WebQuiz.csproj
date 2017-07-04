@@ -171,7 +171,7 @@
     <Content Include="systemjs.config.js" />
     <Content Include="Web.config" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Partial\Profile.cshtml" />
+    <Content Include="Views\Partial\Weather.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\RouteConfig.cs" />
@@ -204,10 +204,10 @@
   <ItemGroup>
     <TypeScriptCompile Include="app\app.component.ts" />
     <TypeScriptCompile Include="app\app.module.ts" />
-    <TypeScriptCompile Include="app\components\profile.ts" />
+    <TypeScriptCompile Include="app\components\weather.ts" />
     <TypeScriptCompile Include="app\main.ts" />
     <TypeScriptCompile Include="app\routes\app.routing.ts" />
-    <TypeScriptCompile Include="app\services\profile.ts" />
+    <TypeScriptCompile Include="app\services\weather.ts" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />

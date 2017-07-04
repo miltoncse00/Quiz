@@ -14,7 +14,7 @@ var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var app_routing_1 = require("./routes/app.routing");
 var app_component_1 = require("./app.component");
-var profile_1 = require("./components/profile");
+var weather_1 = require("./components/weather");
 core_1.enableProdMode();
 var AppModule = (function () {
     function AppModule() {
@@ -32,7 +32,7 @@ AppModule = __decorate([
         ],
         declarations: [
             app_component_1.AppComponent,
-            profile_1.ProfileComponent
+            weather_1.WeatherComponent
         ],
         providers: [
             { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy }
