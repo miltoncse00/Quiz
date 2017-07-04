@@ -8,11 +8,11 @@
     <div class="panel-body">
         <div class="form-group">
             <label for="txtCountry">Country:</label>
-            <input type="text" [ngModel]="country" (ngModelChange)="valuechange($event)" />
+            <input id="txtCountry" type="text" [ngModel]="country" (ngModelChange)="valuechange($event)" />
         </div>
         <div class="form-group">
             <label for="txtCities">Citys:</label>
-            <select (change)="selectCities($event.target.value)">
+            <select id="txtCities" (change)="selectCities($event.target.value)">
                 <option *ngFor="let value of cities" (click)="selectCities(value)">
                     {{value}}
             </select>

@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using System.Net;
 using System.Threading.Tasks;
 using System.Xml;
@@ -7,34 +8,31 @@ namespace QuizService
 {
     public class WeatherApi
     {
-        public WeatherApi()
-        {
-          
-        }
-
         public string GetTemp(XmlDocument document)
         {
-            XmlNode temp_node = document.SelectSingleNode("//temperature");
-            XmlAttribute temp_value = temp_node.Attributes["value"];
-            string temp_string = temp_value.Value;
-            return temp_string;
+            XmlNode tempNode = document.SelectSingleNode("//temperature");
+            Debug.Assert(tempNode != null, "tempNode != null");
+            Debug.Assert(tempNode.Attributes != null, "tempNode.Attributes != null");
+            XmlAttribute tempValue = tempNode.Attributes["value"];
+            var tempString = tempValue.Value;
+            return tempString;
         }
 
-        private const string APIKEY = "b1b15e88fa797225412429c1c50c122a1";
-        private string CurrentURL;
+        private const string Apikey = "b1b15e88fa797225412429c1c50c122a1";
+        private string _currentUrl;
 
-        private void SetCurrentURL(string location)
+        private void SetCurrentUrl(string location)
         {
-            CurrentURL = "http://samples.openweathermap.org/data/2.5/weather?q="
-                         + location + "&mode=xml&APPID=" + APIKEY;
+            _currentUrl = "http://samples.openweathermap.org/data/2.5/weather?q="
+                         + location + "&mode=xml&APPID=" + Apikey;
         }
 
-        protected virtual Task<string> GetXML(string city)
+        protected virtual Task<string> GetXml(string city)
         {
-            SetCurrentURL(city);
+            SetCurrentUrl(city);
             using (WebClient client = new WebClient())
             {
-                Task<string> xmlContent = client.DownloadStringTaskAsync(CurrentURL);
+                Task<string> xmlContent = client.DownloadStringTaskAsync(_currentUrl);
                 return xmlContent;
             }
         }
@@ -42,7 +40,7 @@ namespace QuizService
         public async Task<CurrentWeather> GetWeather(string city)
         {
             
-            var  weatherString = await  GetXML(city);
+            var  weatherString = await  GetXml(city);
             if(weatherString.Contains("error"))
                 return new CurrentWeather();
             XmlDocument xmlDocument = new XmlDocument();

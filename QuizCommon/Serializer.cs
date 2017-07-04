@@ -7,7 +7,7 @@ namespace QuizCommon
     {
         public T Deserialize<T>(string input) where T : class
         {
-            System.Xml.Serialization.XmlSerializer ser = new System.Xml.Serialization.XmlSerializer(typeof(T));
+            XmlSerializer ser = new XmlSerializer(typeof(T));
 
             using (StringReader sr = new StringReader(input))
             {
@@ -15,13 +15,13 @@ namespace QuizCommon
             }
         }
 
-        public string Serialize<T>(T ObjectToSerialize)
+        public string Serialize<T>(T objectToSerialize)
         {
-            XmlSerializer xmlSerializer = new XmlSerializer(ObjectToSerialize.GetType());
+            XmlSerializer xmlSerializer = new XmlSerializer(objectToSerialize.GetType());
 
             using (StringWriter textWriter = new StringWriter())
             {
-                xmlSerializer.Serialize(textWriter, ObjectToSerialize);
+                xmlSerializer.Serialize(textWriter, objectToSerialize);
                 return textWriter.ToString();
             }
         }
