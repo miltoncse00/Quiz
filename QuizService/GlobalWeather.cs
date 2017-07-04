@@ -19,9 +19,15 @@ namespace QuizService
             return citiesByCountryAsync;
         }
 
-        public Task<CurrentWeather> GetWeather(string country, string city)
+        public async Task<CurrentWeather> GetWeather(string country, string city)
         {
-            return null;
+            var globalWeatherSoapClient = new GlobalWeatherSoapClient();
+            var currentWeather = await globalWeatherSoapClient.GetWeatherAsync(country, city);
+
+            var serializer = new Serializer();
+            var weather = serializer.Deserialize<CurrentWeather>(currentWeather);
+
+            return weather;
         }
     }
 }

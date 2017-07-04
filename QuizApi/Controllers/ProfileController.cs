@@ -26,7 +26,7 @@ namespace QuizApi.Controllers
         }
 
         [Route("cities/{country}")]
-        public async  Task<HttpResponseMessage> GetCissties(string country)
+        public async  Task<HttpResponseMessage> GetCities(string country)
         {
           
            var citiesByCountryAsync = _service.GetCitiesByCountry(country);
@@ -57,8 +57,7 @@ namespace QuizApi.Controllers
 
         public async Task<HttpResponseMessage> GetWeather(string country, string city)
         {
-            var globalWeather = new GlobalWeather();
-            CurrentWeather countries = await globalWeather.GetWeather(country, city);
+        CurrentWeather countries = await _service.GetWeather(country, city);
             return Request.CreateResponse(HttpStatusCode.OK, countries);
         }
 
