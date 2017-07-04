@@ -8,7 +8,7 @@ namespace QuizCommon
 {
     public interface IWeatherService
     {
-        Task<List<string>> GetCitiesByCountry(string countryName);
-        Task<List<string>> GetCitiesByCountry(string countryName, string cityName);
+        Task<string> GetCitiesByCountry(string countryName);
+        Task<CurrentWeather> GetWeather(string country, string city);
     }
 }

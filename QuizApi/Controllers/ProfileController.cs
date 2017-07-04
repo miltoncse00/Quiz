@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using System.Xml;
 using QuizCommon;
 using QuizService;
 
@@ -12,6 +13,12 @@ namespace QuizApi.Controllers
     [RoutePrefix("api/profile")]
     public class ProfileController : BaseController
     {
+        private readonly IWeatherService _service;
+
+        public ProfileController(IWeatherService service)
+        {
+            _service = service;
+        }
         [Route("current")]
         public HttpResponseMessage GetCurrent()
         {
@@ -21,12 +28,33 @@ namespace QuizApi.Controllers
         [Route("cities/{country}")]
         public async  Task<HttpResponseMessage> GetCissties(string country)
         {
-           var globalWeather = new GlobalWeather();
-            List<string> countries = await globalWeather.GetCitiesByCountry(country);
+          
+           var citiesByCountryAsync = _service.GetCitiesByCountry(country);
+            var countries = await citiesByCountryAsync.ContinueWith(ConvertToAnother);
             return Request.CreateResponse(HttpStatusCode.OK, countries);
         }
 
-        [Route("weather/{country}/{city")]
+        private List<string> ConvertToAnother(Task<string> obj)
+        {
+            List<string> items = new List<string>();
+            XmlDocument xml = new XmlDocument();
+            xml.LoadXml(obj.Result); // suppose that myXmlString contains "<Names>...</Names>"
+
+            XmlNodeList xnList = xml.SelectNodes("/NewDataSet/Table");
+            foreach (XmlNode xn in xnList)
+            {
+                var xmlElement = xn["City"];
+                if (xmlElement != null)
+                {
+                    string city = xmlElement.InnerText;
+                    items.Add(city);
+                }
+            }
+            return items;
+        }
+
+        [Route("weather/{country}/{city}")]
+
         public async Task<HttpResponseMessage> GetWeather(string country, string city)
         {
             var globalWeather = new GlobalWeather();
