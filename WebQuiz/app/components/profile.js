@@ -16,11 +16,6 @@ var ProfileComponent = (function () {
         this.profileService = profileService;
     }
     ProfileComponent.prototype.ngOnInit = function () {
-        var _this = this;
-        this.profileService.get().then(function (profile) {
-            _this.profile = profile;
-            console.info(profile);
-        });
     };
     ProfileComponent.prototype.valuechange = function (newValue) {
         if (newValue.length >= 2) {
@@ -39,6 +34,12 @@ var ProfileComponent = (function () {
         });
     };
     ProfileComponent.prototype.selectCities = function (value) {
+        var _this = this;
+        this.city = value;
+        this.profileService.getWeather(this.country, this.city).then(function (weather) {
+            _this.weather = weather;
+            console.info(weather);
+        });
         console.info(value);
     };
     return ProfileComponent;

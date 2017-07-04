@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using System.Xml;
 using QuizCommon;
 using QuizService.GlobalWeatherService;
 
@@ -23,11 +22,21 @@ namespace QuizService
         {
             var globalWeatherSoapClient = new GlobalWeatherSoapClient();
             var currentWeather = await globalWeatherSoapClient.GetWeatherAsync(country, city);
-
+            if (currentWeather == "Data Not Found")
+            {
+                var weatherApi = new WeatherApi();
+                return await  weatherApi.GetWeather(city);
+            }
             var serializer = new Serializer();
             var weather = serializer.Deserialize<CurrentWeather>(currentWeather);
 
             return weather;
         }
+
+        //private async Task<CurrentWeather> GetWeatherFromApi(string country, string city)
+        //{
+           
+        //}
     }
+
 }

@@ -6,11 +6,7 @@ import { RouterModule } from "@angular/router";
 import { Location, LocationStrategy, HashLocationStrategy } from "@angular/common";
 import { routing } from "./routes/app.routing";
 import { AppComponent } from "./app.component";
-import { DefaultComponent } from "./components/default";
 import { ProfileComponent } from "./components/profile";
-import { UserComponent } from "./components/user";
-import { Grid } from './grid/grid';
-import { ItemFilterPipe } from './grid/ItemFilter';
 
 enableProdMode();
 
@@ -24,11 +20,7 @@ enableProdMode();
     ],
     declarations: [
         AppComponent,
-        DefaultComponent,
-        ProfileComponent,
-        ItemFilterPipe,
-        Grid,
-        UserComponent
+        ProfileComponent
     ],
     providers: [
         { provide: LocationStrategy, useClass: HashLocationStrategy }

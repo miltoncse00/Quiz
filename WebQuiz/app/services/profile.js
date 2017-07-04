@@ -11,20 +11,24 @@ var __metadata = (this && this.__metadata) || function (k, v) {
 Object.defineProperty(exports, "__esModule", { value: true });
 var core_1 = require("@angular/core");
 var http_1 = require("@angular/http");
+var http_2 = require("@angular/http");
 var ProfileService = (function () {
     function ProfileService(http) {
         this.http = http;
         this.apiUrl = "/api/profile/";
     }
-    ProfileService.prototype.get = function () {
-        var url = this.apiUrl + "current";
-        return this.http.get(url, { body: "" })
-            .toPromise()
-            .then(function (response) { return JSON.parseWithDate(response.text()); });
-    };
     ProfileService.prototype.getcities = function (country) {
         var url = this.apiUrl + "/cities/" + country;
         return this.http.get(url, { body: "" })
+            .toPromise()
+            .then(function (response) { return JSON.parse(response.text()); });
+    };
+    ProfileService.prototype.getWeather = function (country, city) {
+        var data = new http_2.URLSearchParams();
+        data.append('country', country);
+        data.append('city', city);
+        var url = this.apiUrl + "/weather";
+        return this.http.post(url, data)
             .toPromise()
             .then(function (response) { return JSON.parse(response.text()); });
     };

@@ -8,16 +8,14 @@ import { ProfileService } from "../services/profile"
 })
 
 export class ProfileComponent implements OnInit {
-    profile: any;
+    weather: any;
     country: string;
+    city :string;
     cities:string[];
     constructor(private profileService: ProfileService) { }
 
     ngOnInit(): void {
-        this.profileService.get().then((profile) => {
-            this.profile = profile;
-            console.info(profile);
-        });
+       
     }
 
     valuechange(newValue:string) {
@@ -36,6 +34,11 @@ export class ProfileComponent implements OnInit {
         });
     }
     selectCities(value) {
+        this.city = value;
+        this.profileService.getWeather(this.country, this.city).then((weather) => {
+            this.weather = weather;
+            console.info(weather);
+        });
        console.info(value);
     }
 }

@@ -50,6 +50,7 @@
     </Compile>
     <Compile Include="GlobalWeather.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="WeatherApi.cs" />
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

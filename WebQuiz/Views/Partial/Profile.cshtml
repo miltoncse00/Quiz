@@ -20,19 +20,47 @@
     </div>
 </div>
 <div class="panel panel-default">
-    <div class="panel-heading">Profile</div>
+    <div class="panel-heading">Current Weather</div>
     <div class="panel-body">
         <div class="form-group">
-            <label for="txtName">Name:</label>
-            <span id="txtName">{{profile?.Name}}</span>
+            <label for="txtLocation">Location:</label>
+            <span id="txtLocation">{{weather?.Location}}</span>
         </div>
         <div class="form-group">
-            <label for="txtLastName">Last Name:</label>
-            <span id="txtLastName">{{profile?.LastName}}</span>
+            <label for="txtTime">Time:</label>
+            <span id="txtTime">{{weather?.Time}}</span>
         </div>
         <div class="form-group">
-            <label for="txtDOB">Date of Birth:</label>
-            <span id="txtDOB">{{profile?.DateOfBirth | date}}</span>
+            <label for="txtWind">Wind:</label>
+            <span id="txtWind">{{weather?.Wind }}</span>
+        </div>
+        <div class="form-group">
+            <label for="txtVisibility">Visibility:</label>
+            <span id="txtVisibility">{{weather?.Visibility }}</span>
+        </div>
+        <div class="form-group">
+            <label for="txtSkyConditions">Sky Conditions:</label>
+            <span id="txtSkyConditions">{{weather?.SkyConditions }}</span>
+        </div>
+        <div class="form-group">
+            <label for="txtTemparature">Temparature:</label>
+            <span id="txtTemparature">{{weather?.Temparature }}</span>
+        </div>
+        <div class="form-group">
+            <label for="txtDewPoint">DewPoint:</label>
+            <span id="txtDewPoint">{{weather?.DewPoint }}</span>
+        </div>
+        <div class="form-group">
+            <label for="txtRelativeHumidity">RelativeHumidity:</label>
+            <span id="txtRelativeHumidity">{{weather?.RelativeHumidity }}</span>
+        </div>
+        <div class="form-group">
+            <label for="txtPressure">Pressure:</label>
+            <span id="txtPressure">{{weather?.Pressure }}</span>
+        </div>
+        <div class="form-group">
+            <label for="txtStatus">Status:</label>
+            <span id="txtStatus">{{weather?.Status }}</span>
         </div>
     </div>
 </div>

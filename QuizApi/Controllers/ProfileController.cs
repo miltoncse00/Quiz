@@ -5,6 +5,7 @@ using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
 using System.Xml;
+using Newtonsoft.Json.Linq;
 using QuizCommon;
 using QuizService;
 
@@ -19,26 +20,21 @@ namespace QuizApi.Controllers
         {
             _service = service;
         }
-        [Route("current")]
-        public HttpResponseMessage GetCurrent()
-        {
-            return Request.CreateResponse(HttpStatusCode.OK, new { Name = "Carlos", LastName="Martinez", DateOfBirth= new DateTime(1979, 9, 6) });
-        }
 
         [Route("cities/{country}")]
-        public async  Task<HttpResponseMessage> GetCities(string country)
+        public async Task<HttpResponseMessage> GetCities(string country)
         {
-          
-           var citiesByCountryAsync = _service.GetCitiesByCountry(country);
-            var countries = await citiesByCountryAsync.ContinueWith(ConvertToAnother);
+
+            var citiesByCountryAsync = await _service.GetCitiesByCountry(country);
+            var countries = ConvertToAnother(citiesByCountryAsync);
             return Request.CreateResponse(HttpStatusCode.OK, countries);
         }
 
-        private List<string> ConvertToAnother(Task<string> obj)
+        private List<string> ConvertToAnother(string obj)
         {
             List<string> items = new List<string>();
             XmlDocument xml = new XmlDocument();
-            xml.LoadXml(obj.Result); // suppose that myXmlString contains "<Names>...</Names>"
+            xml.LoadXml(obj); // suppose that myXmlString contains "<Names>...</Names>"
 
             XmlNodeList xnList = xml.SelectNodes("/NewDataSet/Table");
             foreach (XmlNode xn in xnList)
@@ -53,11 +49,13 @@ namespace QuizApi.Controllers
             return items;
         }
 
-        [Route("weather/{country}/{city}")]
-
-        public async Task<HttpResponseMessage> GetWeather(string country, string city)
+        [Route("weather")]
+        [HttpPost]
+        public async Task<HttpResponseMessage> GetWeather([FromBody]JObject data)
         {
-        CurrentWeather countries = await _service.GetWeather(country, city);
+            var city = data["city"].ToObject<string>();
+            var country = data["country"].ToObject<string>();
+            CurrentWeather countries = await _service.GetWeather(country, city);
             return Request.CreateResponse(HttpStatusCode.OK, countries);
         }
 

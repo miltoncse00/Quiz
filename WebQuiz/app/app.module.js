@@ -14,11 +14,7 @@ var router_1 = require("@angular/router");
 var common_1 = require("@angular/common");
 var app_routing_1 = require("./routes/app.routing");
 var app_component_1 = require("./app.component");
-var default_1 = require("./components/default");
 var profile_1 = require("./components/profile");
-var user_1 = require("./components/user");
-var grid_1 = require("./grid/grid");
-var ItemFilter_1 = require("./grid/ItemFilter");
 core_1.enableProdMode();
 var AppModule = (function () {
     function AppModule() {
@@ -36,11 +32,7 @@ AppModule = __decorate([
         ],
         declarations: [
             app_component_1.AppComponent,
-            default_1.DefaultComponent,
-            profile_1.ProfileComponent,
-            ItemFilter_1.ItemFilterPipe,
-            grid_1.Grid,
-            user_1.UserComponent
+            profile_1.ProfileComponent
         ],
         providers: [
             { provide: common_1.LocationStrategy, useClass: common_1.HashLocationStrategy }
