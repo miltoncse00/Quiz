@@ -7,12 +7,20 @@ declare var JSON: any;
 export class ProfileService {
     private apiUrl = "/api/profile/";
 
-    constructor(private http: Http) { }
+    constructor(private http: Http) {}
 
-    get() : Promise<any> {
-       const url = `${this.apiUrl}current`;
+    get(): Promise<any> {
+        const url = `${this.apiUrl}current`;
         return this.http.get(url, { body: "" })
             .toPromise()
-            .then(response => JSON.parseWithDate(response.text())); 
-    }    
+            .then(response => JSON.parseWithDate(response.text()));
+    }
+
+    getcities(country): Promise<any>
+    {
+        const url = `${this.apiUrl}/cities/${country}`;
+        return this.http.get(url, { body: "" })
+            .toPromise()
+            .then(response => JSON.parse(response.text()));
+    }
 }

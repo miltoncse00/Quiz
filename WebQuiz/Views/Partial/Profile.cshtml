@@ -1,14 +1,30 @@
 ﻿@{
     Layout = null;
 }
-
 <h3>Profile Component</h3>
+<div class="panel panel-default">
+    <div class="panel-heading">Search</div>
+
+    <div class="panel-body">
+        <div class="form-group">
+            <label for="txtCountry">Country:</label>
+            <input type="text" [ngModel]="country" (ngModelChange)="valuechange($event)" />
+        </div>
+        <div class="form-group">
+            <label for="txtCities">Citys:</label>
+            <select (change)="selectCities($event.target.value)">
+                <option *ngFor="let value of cities" (click)="selectCities(value)">
+                    {{value}}
+            </select>
+        </div>
+    </div>
+</div>
 <div class="panel panel-default">
     <div class="panel-heading">Profile</div>
     <div class="panel-body">
         <div class="form-group">
             <label for="txtName">Name:</label>
-            <span id="txtName">{{profile?.Name}}</span>            
+            <span id="txtName">{{profile?.Name}}</span>
         </div>
         <div class="form-group">
             <label for="txtLastName">Last Name:</label>

@@ -7,3 +7,5 @@
 /WebQuiz/node_modules
 /QuizService/bin
 /QuizService/obj
+/QuizCommon/bin/Debug
+/QuizCommon/obj/Debug

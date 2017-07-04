@@ -22,6 +22,12 @@ var ProfileService = (function () {
             .toPromise()
             .then(function (response) { return JSON.parseWithDate(response.text()); });
     };
+    ProfileService.prototype.getcities = function (country) {
+        var url = this.apiUrl + "/cities/" + country;
+        return this.http.get(url, { body: "" })
+            .toPromise()
+            .then(function (response) { return JSON.parse(response.text()); });
+    };
     return ProfileService;
 }());
 ProfileService = __decorate([

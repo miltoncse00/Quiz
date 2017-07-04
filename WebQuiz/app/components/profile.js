@@ -22,6 +22,25 @@ var ProfileComponent = (function () {
             console.info(profile);
         });
     };
+    ProfileComponent.prototype.valuechange = function (newValue) {
+        if (newValue.length >= 2) {
+            this.country = newValue;
+            this.populateCities(this.country);
+        }
+        else {
+            this.cities = [];
+        }
+    };
+    ProfileComponent.prototype.populateCities = function (country) {
+        var _this = this;
+        this.profileService.getcities(country).then(function (cities) {
+            _this.cities = cities;
+            console.info(cities);
+        });
+    };
+    ProfileComponent.prototype.selectCities = function (value) {
+        console.info(value);
+    };
     return ProfileComponent;
 }());
 ProfileComponent = __decorate([

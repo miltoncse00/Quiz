@@ -68,8 +68,6 @@
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Model\UserModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="Repository\IRepository.cs" />
-    <Compile Include="Repository\RepositoryT.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config">
@@ -77,6 +75,10 @@
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ProjectReference Include="..\QuizCommon\QuizCommon.csproj">
+      <Project>{b15825a3-bd23-44c0-bbd9-c625d0f8fb5e}</Project>
+      <Name>QuizCommon</Name>
+    </ProjectReference>
     <ProjectReference Include="..\QuizService\QuizService.csproj">
       <Project>{c80a8a11-64c3-4b47-b181-0d1841b310d8}</Project>
       <Name>QuizService</Name>

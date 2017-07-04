@@ -4,6 +4,7 @@ using System.Net;
 using System.Net.Http;
 using System.Threading.Tasks;
 using System.Web.Http;
+using QuizCommon;
 using QuizService;
 
 namespace QuizApi.Controllers
@@ -20,9 +21,18 @@ namespace QuizApi.Controllers
         [Route("cities/{country}")]
         public async  Task<HttpResponseMessage> GetCissties(string country)
         {
-            var globalWeather = new GlobalWeather();
+           var globalWeather = new GlobalWeather();
             List<string> countries = await globalWeather.GetCitiesByCountry(country);
             return Request.CreateResponse(HttpStatusCode.OK, countries);
         }
+
+        [Route("weather/{country}/{city")]
+        public async Task<HttpResponseMessage> GetWeather(string country, string city)
+        {
+            var globalWeather = new GlobalWeather();
+            CurrentWeather countries = await globalWeather.GetWeather(country, city);
+            return Request.CreateResponse(HttpStatusCode.OK, countries);
+        }
+
     }
 }

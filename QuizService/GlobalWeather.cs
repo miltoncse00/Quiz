@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Xml;
+using QuizCommon;
 using QuizService.GlobalWeatherService;
 
 namespace QuizService
@@ -14,6 +15,14 @@ namespace QuizService
         {
             var globalWeatherSoapClient = new GlobalWeatherSoapClient();
             var citiesByCountryAsync = globalWeatherSoapClient.GetCitiesByCountryAsync(countryName);
+            var continuationTask = citiesByCountryAsync.ContinueWith(ConvertToAnother);
+            return continuationTask;
+        }
+
+        public Task<List<string>> GetCitiesByCountry(string countryName, string cityName)
+        {
+            var globalWeatherSoapClient = new GlobalWeatherSoapClient();
+            var citiesByCountryAsync = globalWeatherSoapClient.GetWeatherAsync(countryName, cityName);
             var continuationTask = citiesByCountryAsync.ContinueWith(ConvertToAnother);
             return continuationTask;
         }
@@ -35,6 +44,11 @@ namespace QuizService
                 }
             }
             return items;
+        }
+
+        public Task<CurrentWeather> GetWeather(string country, string city)
+        {
+            return null;
         }
     }
 }
